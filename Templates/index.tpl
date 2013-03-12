@@ -30,5 +30,4 @@
         Renda {$renda}
         <hr />
         
-        
 {include file="$footer"}

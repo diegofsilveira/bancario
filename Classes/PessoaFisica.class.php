@@ -7,9 +7,13 @@
 
 class PessoaFisica extends Pessoa{
     
+    protected $DB;
+    protected $connection;
+    
     
     function __construct() {
-        
+        $this->DB =  Database::getInstance();
+        $this->connection = $this->DB->getConnection();
     }
     
     public function teste(){

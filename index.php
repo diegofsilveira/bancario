@@ -2,6 +2,7 @@
 require_once 'Smarty/Smarty.class.php';
 require_once 'Classes/Pessoa.class.php';
 require_once 'Classes/PessoaFisica.class.php';
+require_once 'Classes/conta_especial.class.php';
 
 $template = new Smarty();
 $template->template_dir = 'Templates';
@@ -18,12 +19,13 @@ $usuario = array(
 );
 $template->assign('user',$usuario);
 
-$pessoaFisica = new PessoaFisica();
-$pessoa = new Pessoa();
+//$pessoaFisica = new PessoaFisica();
+$pessoa = new PessoaFisica();
+
 
 $usuarioID = 3;
 $pesquisa = $pessoa->selecionar($usuarioID);
-while ($linha = $pesquisa->fetch(PDO::FETCH_ASSOC)) {
+while ($linha = $pesquisa->fetch(PDO::FETCH_ASSOC)){
     //Setando os valores do objeto pessoa
     $pessoa->setNome($linha['nome']);
     $pessoa->setEndereco($linha['endereco']);
@@ -39,8 +41,6 @@ $template->assign('endereco', $pessoa->getEndereco());
 $template->assign('cep', $pessoa->getCep());
 $template->assign('telefone', $pessoa->getTelefone());
 $template->assign('renda', $pessoa->getRenda());
-
-
 
 
 
